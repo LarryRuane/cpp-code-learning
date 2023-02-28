@@ -1,4 +1,4 @@
-// g++ -g3 -std=c++17 copy-cons.cpp
+// g++ -g3 -std=c++17 copy-move-cons.cpp
 #include <iostream>
 #include <string.h>
 
@@ -88,6 +88,9 @@ int main()
     line = __LINE__; UsesString us_move(String("to-UsesString"));
     line = __LINE__; b = a;
     line = __LINE__; s = std::move(b);
+    std::cout << "---- moved-from b (should be empty string) :" << b.m_buffer << ":\n";
     std::cout << "---- about to reach end of main()\n";
     line = __LINE__;
+    auto i = std::hash<std::string>{}("hello");
+    std::cout << i << '\n';
 }
